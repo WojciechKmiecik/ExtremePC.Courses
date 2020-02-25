@@ -1,8 +1,12 @@
+using ExtremePC.Courses.WebApi.Configuration;
+using ExtremePC.Courses.WebApi.ErrorHandling;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
+using Serilog;
 
 namespace ExtremePC.Courses.WebApi
 {
@@ -19,21 +23,32 @@ namespace ExtremePC.Courses.WebApi
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+
+            services.ConfigureSwaggerSerivce();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ILoggerFactory loggerFactory)
         {
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
             }
+            else
+            {
+                //app.UseHsts();
+                app.ConfigureExceptionHandler(loggerFactory.CreateLogger("Global"));
+            }
 
-            app.UseHttpsRedirection();
+            app.ConfigureSwagger();
+
+            //app.UseHttpsRedirection();
+
+            app.UseSerilogRequestLogging();
 
             app.UseRouting();
 
-            app.UseAuthorization();
+            //app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {

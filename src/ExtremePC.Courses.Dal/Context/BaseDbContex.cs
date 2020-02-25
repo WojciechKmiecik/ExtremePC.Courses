@@ -10,15 +10,15 @@ using System.Threading.Tasks;
 namespace ExtremePC.Courses.Dal.Context
 {
     // could be migrated to common library, in case of multiple databases...
-    public abstract class BaseDbContext : DbContext
+    internal abstract class BaseDbContext : DbContext
     {
-        public BaseDbContext(DbContextOptions dbOptions)
+        protected BaseDbContext(DbContextOptions dbOptions)
             : base(dbOptions)
         {
 
         }
 
-        public BaseDbContext(DbContextOptions<BaseDbContext> dbOptions)
+        protected BaseDbContext(DbContextOptions<BaseDbContext> dbOptions)
             : base(dbOptions)
         {
 
@@ -79,7 +79,7 @@ namespace ExtremePC.Courses.Dal.Context
         {
             ApplyChangeTrackingInfo();
             Validate();
-            return await base.SaveChangesAsync();
+            return await base.SaveChangesAsync(cancellationToken);
         }
     }
 }
