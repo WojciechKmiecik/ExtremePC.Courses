@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace ExtremePC.Courses.Logic
+﻿namespace ExtremePC.Courses.Logic
 {
     public class Class1
     {
