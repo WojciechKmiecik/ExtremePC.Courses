@@ -19,6 +19,7 @@ namespace ExtremePC.Courses.Dal
 
             services.AddScoped<ITeacherDataService, TeacherDataService>();
             services.AddScoped<IStudentDataService, StudentDataService>();
+            services.AddScoped<ICourseDataService, CourseDataService>();
 
         }
     }

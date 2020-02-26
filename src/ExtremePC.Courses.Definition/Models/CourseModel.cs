@@ -16,5 +16,6 @@ namespace ExtremePC.Courses.Definition.Models
         public long TeacherId { get; set; }
         public string TeacherName { get; set; }
         public List<StudentModel> Students { get; set; }
+        public ushort CurrentCapacity { get; set;}
     }
 }

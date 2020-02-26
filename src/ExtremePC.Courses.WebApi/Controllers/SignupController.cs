@@ -46,7 +46,7 @@ namespace ExtremePC.Courses.WebApi.Controllers
             }
         }
         // think about versioning the controller
-        [HttpPost("{courseId:long}")]
+        [HttpPost("PostAsync/{courseId:long}")]
         [Consumes(MediaTypeNames.Application.Json)]
         [Produces(MediaTypeNames.Text.Plain)]
         [ProducesResponseType(typeof(bool), StatusCodes.Status202Accepted)]

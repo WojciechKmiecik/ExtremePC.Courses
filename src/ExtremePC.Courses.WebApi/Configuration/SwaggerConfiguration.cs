@@ -39,7 +39,7 @@ namespace ExtremePC.Courses.WebApi.Configuration
             var routeBuilder = new RouteBuilder(app);
             routeBuilder.MapGet(string.Empty, ctx =>
             {
-                ctx.Response.Redirect("/swagger");
+                ctx.Response.Redirect("swagger");
                 return Task.CompletedTask;
             });
             app.UseRouter(routeBuilder.Build());

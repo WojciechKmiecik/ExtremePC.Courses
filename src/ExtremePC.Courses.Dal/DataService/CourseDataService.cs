@@ -12,7 +12,8 @@ using System.Threading.Tasks;
 
 namespace ExtremePC.Courses.Dal.DataService
 {
-    internal class CourseDataService // : ICourseDataService
+
+    internal class CourseDataService : ICourseDataService
     {
         private readonly CoursesDbContext _dbContext;
 
@@ -26,18 +27,24 @@ namespace ExtremePC.Courses.Dal.DataService
             return e.Map();
         }
 
+        // assumes that studententity is already in db
+        public async Task<bool> AddStudentToCourse(long courseId, long studentId, string guid)
+        {
+            var c = await _dbContext.Courses.Include(x => x.CourseStudents).Select(x => x.Map()).FirstOrDefaultAsync(x => x.Id == courseId);
+            if (c.MaxCapacity >= c.CurrentCapacity)
+            {
+                return false;
+            }
+            var m = await _dbContext.CourseStudents.FirstOrDefaultAsync(x => x.CourseId == courseId && x.StudentId == studentId);
+            if (m == null || m.Id < 1)
+            {
+                await _dbContext.CourseStudents.AddAsync(new CourseStudentEntity() { CourseId = courseId, StudentId = studentId, @Guid = guid }); ;
+                var newId = await _dbContext.SaveChangesAsync();
 
-        //public async Task<object> AddStudentToCourse(long courseId, long studentId, string guid)
-        //{
-        //    var m = await _dbContext.CourseStudents.FirstOrDefaultAsync(x => x.CourseId == courseId && x.StudentId == studentId);
-        //    if (m == null || m.Id < 1)
-        //    {
-        //        await _dbContext.CourseStudents.AddAsync(new CourseStudentEntity() { CourseId = courseId, StudentId = studentId, @Guid = guid }); ;
-        //        var newId = await _dbContext.SaveChangesAsync();
-        //        m = await GetById(newId);
-        //    }
-        //    return m;
-        //}
+            }
+            else { return false; }
+            return true;
+        }
 
     }
 }

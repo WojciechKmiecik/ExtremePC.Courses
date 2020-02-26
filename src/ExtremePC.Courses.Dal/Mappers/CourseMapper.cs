@@ -32,6 +32,7 @@ namespace ExtremePC.Courses.Dal.Mappers
                 model.TeacherId = entity.Teacher?.Id ?? 0;
                 model.TeacherName = string.Concat(entity.Teacher?.FirstName, " ", entity.Teacher?.LastName);
                 model.Topic = entity.Topic;
+                model.CurrentCapacity = Convert.ToUInt16(entity.CourseStudents?.Where(x => x.CourseId == model.Id).ToList()?.Count ?? 0);
                 model.Students = entity.CourseStudents?.Where(x => x.CourseId == model.Id)?.Select(x => x.Student?.Map())?.ToList();
             }
             return model;

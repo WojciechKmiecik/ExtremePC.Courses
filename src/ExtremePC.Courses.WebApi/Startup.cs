@@ -1,3 +1,4 @@
+using ExtremePC.Courses.Logic;
 using ExtremePC.Courses.WebApi.Configuration;
 using ExtremePC.Courses.WebApi.ErrorHandling;
 using Microsoft.AspNetCore.Builder;
@@ -23,8 +24,8 @@ namespace ExtremePC.Courses.WebApi
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
-
             services.ConfigureSwaggerSerivce();
+            services.ConfigureLogicServices(Configuration);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
