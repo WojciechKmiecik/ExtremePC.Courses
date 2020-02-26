@@ -1,4 +1,6 @@
 ﻿using ExtremePC.Courses.Dal.Context;
+using ExtremePC.Courses.Dal.DataService;
+using ExtremePC.Courses.Definition.DataServices;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -14,6 +16,9 @@ namespace ExtremePC.Courses.Dal
             {
                 c.UseSqlServer(configuration.GetConnectionString("DefaultConnection"));
             });
+
+            services.AddScoped<ITeacherDataService, TeacherDataService>();
+            services.AddScoped<IStudentDataService, StudentDataService>();
 
         }
     }

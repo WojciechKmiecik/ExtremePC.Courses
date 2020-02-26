@@ -7,7 +7,7 @@ namespace ExtremePC.Courses.Dal.Entites
     {
         public string Topic { get; set; }
         public ushort MaxCapacity { get; set; }
-        public int TeacherId { get; set; }
+        public long TeacherId { get; set; }
         public TeacherEntity Teacher { get; set; }
         public ICollection<CourseStudentEntity> CourseStudents { get; set; }
     }

@@ -4,11 +4,11 @@ namespace ExtremePC.Courses.Dal.Entites
 {
     internal class CourseStudentEntity : BaseEntity
     {
-        public int CourseId { get; set; }
+        public long CourseId { get; set; }
         public CourseEntity Course { get; set; }
-        public int StudentId { get; set; }
+        public long StudentId { get; set; }
         public StudentEntity Student { get; set; }
         //optional, for checking the statuses
-        //public string  Guid { get; set; }
+       public string  @Guid { get; set; }
     }
 }
