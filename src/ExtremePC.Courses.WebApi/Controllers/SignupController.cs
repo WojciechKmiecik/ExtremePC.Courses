@@ -4,6 +4,7 @@ using System.Linq;
 using System.Net.Mime;
 using System.Threading.Tasks;
 using ExtremePC.Courses.Definition.Services;
+using ExtremePC.Courses.WebApi.Mappers;
 using ExtremePC.Courses.WebApi.WebModels;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -34,15 +35,16 @@ namespace ExtremePC.Courses.WebApi.Controllers
         public async Task<IActionResult> PostSignup([FromRoute] long courseId, [FromBody] StudentSignUpWebModel student)
         {
             // validate request, use fluent validation or something
-            //var result = await _signupService.SignupStudentToCourseAsync();
-            bool result = false;
-            if (result)
+
+            var result = await _signupService.SignupStudentToCourseAsync(student.Map(courseId));
+            
+            if (result.Item1)
             {
-                return Ok();
+                return Ok(result.Item2);
             }
             else
             {
-                return Forbid();
+                return Forbid(result.Item2);
             }
         }
         // think about versioning the controller
