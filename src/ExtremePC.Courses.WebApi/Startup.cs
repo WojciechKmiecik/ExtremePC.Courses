@@ -1,6 +1,7 @@
 using ExtremePC.Courses.Logic;
 using ExtremePC.Courses.WebApi.Configuration;
 using ExtremePC.Courses.WebApi.ErrorHandling;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -26,6 +27,9 @@ namespace ExtremePC.Courses.WebApi
             services.AddControllers();
             services.ConfigureSwaggerSerivce();
             services.ConfigureLogicServices(Configuration);
+
+            // should be migrated, should be based on JWT and Database users
+            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -49,7 +53,9 @@ namespace ExtremePC.Courses.WebApi
 
             app.UseRouting();
 
-            //app.UseAuthorization();
+            app.UseAuthentication();
+
+            app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {

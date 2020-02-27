@@ -14,6 +14,7 @@ namespace ExtremePC.Courses.WebApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Microsoft.AspNetCore.Authorization.AllowAnonymous]
     public class SignupController : ControllerBase
     {
         private readonly ISignupService _signupService;
@@ -28,9 +29,9 @@ namespace ExtremePC.Courses.WebApi.Controllers
         [HttpPost("{courseId:long}")]
         [Consumes(MediaTypeNames.Application.Json)]
         [Produces(MediaTypeNames.Text.Plain)]
-        [ProducesResponseType(typeof(bool), StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        [ProducesResponseType(typeof(bool), StatusCodes.Status403Forbidden)]
+        [ProducesResponseType(StatusCodes.Status403Forbidden)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<IActionResult> PostSignup([FromRoute] long courseId, [FromBody] StudentSignUpWebModel student)
         {
@@ -44,7 +45,7 @@ namespace ExtremePC.Courses.WebApi.Controllers
             }
             else
             {
-                return Forbid(result.Item2);
+                return StatusCode(StatusCodes.Status403Forbidden, result.Item2);
             }
         }
         // think about versioning the controller
