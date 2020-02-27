@@ -9,7 +9,7 @@ namespace ExtremePC.Courses.Dal.Mappers
         public static StudentModel Map(this SignupModel incomingModel)
         {
             var model = new StudentModel();
-            if (model != null)
+            if (incomingModel != null)
             {
                 model.FirstName = incomingModel.FirstName;
                 model.LastName = incomingModel.LastName;

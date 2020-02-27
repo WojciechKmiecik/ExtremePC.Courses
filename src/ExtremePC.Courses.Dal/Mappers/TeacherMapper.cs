@@ -22,7 +22,7 @@ namespace ExtremePC.Courses.Dal.Mappers
         public static TeacherModel Map(this TeacherEntity entity)
         {
             var model = new TeacherModel();
-            if (model != null)
+            if (entity != null)
             {
                 model.Id = entity.Id;
                 model.FirstName = entity.FirstName;

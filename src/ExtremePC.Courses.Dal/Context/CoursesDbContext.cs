@@ -6,9 +6,13 @@ namespace ExtremePC.Courses.Dal.Context
 {
     internal class CoursesDbContext : BaseDbContext
     {
+        private static bool created = false;
         public CoursesDbContext(DbContextOptions<CoursesDbContext> options) : base(options)
         {
-
+            if (!created)
+            {
+                Database.EnsureCreated();
+            }
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

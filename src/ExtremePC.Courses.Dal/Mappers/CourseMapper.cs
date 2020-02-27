@@ -25,7 +25,7 @@ namespace ExtremePC.Courses.Dal.Mappers
         public static CourseModel Map(this CourseEntity entity)
         {
             var model = new CourseModel();
-            if (model != null)
+            if (entity != null)
             {
                 model.Id = entity.Id;
                 model.MaxCapacity = entity.MaxCapacity;
