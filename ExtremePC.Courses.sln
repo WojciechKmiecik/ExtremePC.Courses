@@ -23,6 +23,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExtremePC.Courses.Contracts
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{DC2BE231-12D5-448E-9FD0-9CF4005120A3}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "scripts", "scripts", "{8D3FFCEA-26EB-48F6-B575-FD90A20CBD83}"
+	ProjectSection(SolutionItems) = preProject
+		EF.txt = EF.txt
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -73,6 +78,7 @@ Global
 		{CE954824-B60B-4665-900B-2AD7DCAEC601} = {E9371431-DB8B-4EB4-ACF1-62EE42B4963F}
 		{EC2EEC95-61A6-4AB4-9278-6A98BD153D45} = {E9371431-DB8B-4EB4-ACF1-62EE42B4963F}
 		{DC2BE231-12D5-448E-9FD0-9CF4005120A3} = {E9371431-DB8B-4EB4-ACF1-62EE42B4963F}
+		{8D3FFCEA-26EB-48F6-B575-FD90A20CBD83} = {E9371431-DB8B-4EB4-ACF1-62EE42B4963F}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {C762D84D-18CD-4554-8DE4-20C427D7E3D7}
