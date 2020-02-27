@@ -31,7 +31,7 @@ namespace ExtremePC.Courses.Shared.Mapper
                 model.FirstName = message.FirstName;
                 model.LastName = message.LastName;
                 model.Id = message.CourseId;
-                guid = message.Guid?.ToString();
+                guid = message.Guid.ToString();
             }
             return (model, guid);
         }

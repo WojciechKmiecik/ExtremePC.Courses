@@ -1,6 +1,7 @@
 ﻿using ExtremePC.Courses.Contracts.Interfaces;
 using ExtremePC.Courses.Definition.Messaging;
 using ExtremePC.Courses.Definition.Services;
+using ExtremePC.Courses.Shared.Mapper;
 using MassTransit;
 using System;
 using System.Collections.Generic;
@@ -21,12 +22,14 @@ namespace ExtremePC.Courses.Endpoint.Handlers
 
         public async Task Consume(ConsumeContext<ISignupRequested> context)
         {
-            var serviceResponse = await _signupService.SignupStudentToCourseAsync(context.Message?.SignupStudent.Map(), context.Message?.SignupStudent?.Guid.ToString());
-            //var serviceResponse = await _bookingService.PostNewBooking(context.Message.BookingModel);
+            
+            var mappedVal = context.Message.SignupStudent.Map();
+            var serviceResponse = await _signupService.SignupStudentToCourseAsync(mappedVal.Item1,mappedVal.Item2);            
 
             await context.RespondAsync<ISignupProcessed>(new
             {
-                Message = serviceResponse
+                Result = serviceResponse.Item1,
+                Message = serviceResponse.Item2
             });
             // respond or send mail or use signalR. 
 

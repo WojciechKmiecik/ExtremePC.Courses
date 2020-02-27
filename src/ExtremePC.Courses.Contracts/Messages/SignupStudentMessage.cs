@@ -1,5 +1,4 @@
 ﻿using ExtremePC.Courses.Contracts.Interfaces;
-using ExtremePC.Courses.Definition.Messaging;
 using System;
 
 namespace ExtremePC.Courses.Contracts.Messages
