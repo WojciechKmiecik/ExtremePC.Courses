@@ -1,0 +1,37 @@
+// rabbit
+https://stackoverflow.com/questions/47290108/how-to-open-rabbitmq-in-browser-using-docker-container
+
+docker run -d --name courses-rabbit -p 4369:4369 -p 5671:5671 -p 5672:5672 -p 15672:15672 rabbitmq
+
+docker container exec -it courses-rabbit rabbitmq-plugins enable rabbitmq_management
+
+docker run courses-rabbit
+docker kill courses-rabbit
+
+firefox http://localhost:15672/#/
+guest guest
+
+
+for compose : 
+version: '3'
+services:
+  rabbitmq:
+    image: rabbitmq:management
+    ports:
+      - '4369:4369'
+      - '5671:5671'
+      - '5672:5672'
+      - '15672:15672'
+    volumes:
+      - rabbitmq_data
+
+volumes:
+  rabbitmq_data:
+
+  missing -
+  Start rabbit
+  wait for startup
+  start mssql server - Container ?? to discuss
+  - start api
+  -start worker
+  

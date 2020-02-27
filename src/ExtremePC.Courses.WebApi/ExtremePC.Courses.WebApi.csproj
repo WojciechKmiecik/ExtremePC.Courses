@@ -19,6 +19,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\ExtremePC.Courses.Contracts\ExtremePC.Courses.Contracts.csproj" />
     <ProjectReference Include="..\ExtremePC.Courses.Definition\ExtremePC.Courses.Definition.csproj" />
     <ProjectReference Include="..\ExtremePC.Courses.Logic\ExtremePC.Courses.Logic.csproj" />
   </ItemGroup>

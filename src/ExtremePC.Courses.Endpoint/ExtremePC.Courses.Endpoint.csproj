@@ -1,7 +1,17 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MassTransit" Version="6.2.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ExtremePC.Courses.Contracts\ExtremePC.Courses.Contracts.csproj" />
+    <ProjectReference Include="..\ExtremePC.Courses.Definition\ExtremePC.Courses.Definition.csproj" />
+    <ProjectReference Include="..\ExtremePC.Courses.Logic\ExtremePC.Courses.Logic.csproj" />
+  </ItemGroup>
 
 </Project>

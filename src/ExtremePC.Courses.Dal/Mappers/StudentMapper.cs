@@ -16,6 +16,7 @@ namespace ExtremePC.Courses.Dal.Mappers
                 entity.Id = model.Id;
                 entity.FirstName = model.FirstName;
                 entity.LastName = model.LastName;
+                entity.Age = model.Age;
             }
             return entity;               
         }
@@ -27,6 +28,7 @@ namespace ExtremePC.Courses.Dal.Mappers
                 model.Id = entity.Id;
                 model.FirstName = entity.FirstName;
                 model.LastName = entity.LastName;
+                model.Age = entity.Age;
             }
             return model;
         }

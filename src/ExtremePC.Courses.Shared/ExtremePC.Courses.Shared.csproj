@@ -4,4 +4,9 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\ExtremePC.Courses.Contracts\ExtremePC.Courses.Contracts.csproj" />
+    <ProjectReference Include="..\ExtremePC.Courses.Definition\ExtremePC.Courses.Definition.csproj" />
+  </ItemGroup>
+
 </Project>

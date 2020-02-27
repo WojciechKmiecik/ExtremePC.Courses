@@ -1,4 +1,5 @@
-﻿using ExtremePC.Courses.Definition.Models;
+﻿using ExtremePC.Courses.Contracts.Messages;
+using ExtremePC.Courses.Definition.Models;
 using ExtremePC.Courses.WebApi.WebModels;
 using System;
 using System.Collections.Generic;

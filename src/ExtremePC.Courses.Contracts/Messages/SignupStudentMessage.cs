@@ -1,4 +1,5 @@
-﻿using ExtremePC.Courses.Definition.Messaging;
+﻿using ExtremePC.Courses.Contracts.Interfaces;
+using ExtremePC.Courses.Definition.Messaging;
 using System;
 
 namespace ExtremePC.Courses.Contracts.Messages
@@ -12,7 +13,7 @@ namespace ExtremePC.Courses.Contracts.Messages
         }
         public Guid Guid { get; private set; }
 
-        public int CourseId { get; set; }
+        public long CourseId { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public byte Age { get; set; }

@@ -28,7 +28,13 @@ namespace ExtremePC.Courses.Dal.DataService
 
         public async Task<StudentModel> GetByData(StudentModel model)
         {
-            var e = await _dbContext.Students.FirstOrDefaultAsync(x => x.FirstName.Equals(model.FirstName.Trim(), StringComparison.OrdinalIgnoreCase) &&
+            //somehow id does not work in EF Core?! 
+            // querry could not be translated. Either rewrite the query in a form that can be translated, or switch to client evaluation explicitly by inserting a call to either
+
+            //var e = await _dbContext.Students.FirstOrDefaultAsync(x => x.FirstName.Equals(model.FirstName.Trim(), StringComparison.OrdinalIgnoreCase) &&
+            //                                                           x.LastName.Equals(model.LastName.Trim(), StringComparison.OrdinalIgnoreCase) &&
+            //                                                           (model.Age == x.Age || model.Age == x.Age + 1));  // someone get older, i dont have better identifier
+            var e = (await _dbContext.Students.ToListAsync()).FirstOrDefault(x => x.FirstName.Equals(model.FirstName.Trim(), StringComparison.OrdinalIgnoreCase) &&
                                                                        x.LastName.Equals(model.LastName.Trim(), StringComparison.OrdinalIgnoreCase) &&
                                                                        (model.Age == x.Age || model.Age == x.Age + 1));  // someone get older, i dont have better identifier
             return e.Map();

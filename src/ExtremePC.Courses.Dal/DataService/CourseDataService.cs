@@ -30,8 +30,8 @@ namespace ExtremePC.Courses.Dal.DataService
         // assumes that studententity is already in db
         public async Task<bool> AddStudentToCourse(long courseId, long studentId, string guid)
         {
-            var c = await _dbContext.Courses.Include(x => x.CourseStudents).Select(x => x.Map()).FirstOrDefaultAsync(x => x.Id == courseId);
-            if (c.MaxCapacity >= c.CurrentCapacity)
+            var c = await _dbContext.Courses.Include(x => x.CourseStudents).Where(x => x.Id == courseId).Select(x => x.Map()).FirstOrDefaultAsync();
+            if (c.MaxCapacity <= c.CurrentCapacity)
             {
                 return false;
             }

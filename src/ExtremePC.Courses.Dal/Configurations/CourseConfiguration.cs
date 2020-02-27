@@ -11,6 +11,12 @@ namespace ExtremePC.Courses.Dal.Configurations
             builder.HasOne(c => c.Teacher)
                 .WithMany(t => t.Courses);
             builder.ToTable("Courses");
+
+
+            // could be loaded from configuration
+            builder.HasData(new CourseEntity() { Id = 1, MaxCapacity = 5, TeacherId = 1, Topic = "Small Capacity Course" });
+            builder.HasData(new CourseEntity() { Id = 2, MaxCapacity = 20, TeacherId = 2, Topic = "Frontend Course" });
+            builder.HasData(new CourseEntity() { Id = 3, MaxCapacity = 200, TeacherId = 2, Topic = "Backend Course" });
         }
     }
 }
