@@ -18,10 +18,19 @@ namespace ExtremePC.Courses.Endpoint.Handlers
             _requestClient = requestClient;
         }
 
-        public async Task SendRequest(SignupStudentMessage signupStudentMessage)
+        public async Task<bool> SendRequest(SignupStudentMessage signupStudentMessage)
         {
-            _requestClient.Create(new { SignupStudent = signupStudentMessage });
-            await Task.CompletedTask;
+            try
+            {
+                _requestClient.Create(new { SignupStudent = signupStudentMessage });
+                await Task.CompletedTask;
+                return true;
+            }
+            catch (Exception e) // catch more general exception
+            {
+                await Task.FromException(e);
+                return false;
+            }
         }
 
     }

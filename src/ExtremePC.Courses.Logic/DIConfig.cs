@@ -11,6 +11,7 @@ namespace ExtremePC.Courses.Logic
         public static void ConfigureLogicServices(this IServiceCollection services, IConfiguration configuration)
         {
             services.ConfigureDalServices(configuration);
+
             services.AddScoped<ISignupService, SignupService>();
         }
     }

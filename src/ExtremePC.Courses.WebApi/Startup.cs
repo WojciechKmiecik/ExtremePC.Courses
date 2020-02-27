@@ -30,6 +30,8 @@ namespace ExtremePC.Courses.WebApi
 
             // should be migrated, should be based on JWT and Database users
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie();
+
+            services.ConfigureMassTransitSerivce();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -8,6 +8,9 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="MassTransit" Version="6.2.0" />
+    <PackageReference Include="MassTransit.Extensions.DependencyInjection" Version="6.2.0" />
+    <PackageReference Include="MassTransit.RabbitMQ" Version="6.2.0" />
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.9.10" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.1" />
     <PackageReference Include="Serilog.AspNetCore" Version="3.2.0" />
@@ -21,7 +24,9 @@
   <ItemGroup>
     <ProjectReference Include="..\ExtremePC.Courses.Contracts\ExtremePC.Courses.Contracts.csproj" />
     <ProjectReference Include="..\ExtremePC.Courses.Definition\ExtremePC.Courses.Definition.csproj" />
+    <ProjectReference Include="..\ExtremePC.Courses.Endpoint\ExtremePC.Courses.Endpoint.csproj" />
     <ProjectReference Include="..\ExtremePC.Courses.Logic\ExtremePC.Courses.Logic.csproj" />
+    <ProjectReference Include="..\ExtremePC.Courses.Shared\ExtremePC.Courses.Shared.csproj" />
   </ItemGroup>
 
 
